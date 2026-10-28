@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+.vercel/
+.DS_Store
+
+.preview-production
+public/qa-responsive.html
