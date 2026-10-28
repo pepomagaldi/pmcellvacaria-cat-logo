@@ -1,3 +1,42 @@
+# Imagens do catálogo — atualização em 28/10/2026
+
+Os 28 SKUs foram associados às URLs de fotos de referência do HTML antigo, distribuídas em 20 famílias. O site exibe fundo branco em todos os cards e mantém `object-fit: contain` para não cortar os telefones. As fotos podem variar de cor e não provam disponibilidade de estoque. O navegador acessa URLs de terceiros diretamente; caso o servidor de origem bloqueie hotlink, a imagem pode falhar e o card mostra fallback. **A existência de uma URL pública não comprova autorização de reutilização comercial.** Obter a autorização de fornecedor/fabricante antes de campanha comercial e preferir substituí-las por fotos próprias ou licenciadas e hospedadas localmente.
+
+## Referências do HTML importadas
+
+- Xiaomi A5 128 GB: https://cdn.atacadoconnect.com/produtos/1349740/cel-xiaomi-redmi-a5-ds4ram128gb-688-lake-green-global-br-lpeq-1349740-j22t2.webp
+- Xiaomi 15C 128 GB: https://media-cdn.bnn.in.th/522623/xiaomi-smartphone-redmi-15c-6128-mint-green-01.jpg
+- Xiaomi 15C 256 GB: https://media-cdn.bnn.in.th/522623/xiaomi-smartphone-redmi-15c-6128-mint-green-01.jpg
+- Redmi 15 256 GB: https://i0.wp.com/xiaomistores.co.ke/wp-content/uploads/2025/09/Redmi-15-4G-256GB-Affordable-Smartphone-Christmas-Gift-Offer.webp?fit=1080%2C1080&ssl=1
+- Redmi 15 128 GB: https://i0.wp.com/xiaomistores.co.ke/wp-content/uploads/2025/09/Redmi-15-4G-256GB-Affordable-Smartphone-Christmas-Gift-Offer.webp?fit=1080%2C1080&ssl=1
+- Redmi A7 Pro 64 GB: https://www.adntienda.com/web/image/product.product/221125/image_1024/%5BINN012727%5D%20Celular%20Xiaomi%20Redmi%20A7%20Pro%20LTE%20128GB%204GB-RAM%20Azul%2074477?unique=8580976
+- Poco C71 128 GB: https://mi-shop.com/upload/iblock/670/00bt3yncyzuwt1o1jvslgxgjgq8wji1g.png
+- Poco C71 64 GB: https://mi-shop.com/upload/iblock/670/00bt3yncyzuwt1o1jvslgxgjgq8wji1g.png
+- Poco C85 256 GB: https://mi-home.pl/cdn/shop/files/poco-c85-purple-1.png?v=1756715374&width=1946
+- Poco C85 128 GB: https://mi-home.pl/cdn/shop/files/poco-c85-purple-1.png?v=1756715374&width=1946
+- Poco C81 Pro 128 GB: https://www.superplanshet.ru/images/POCO_C81_Pro_AAFE14Nj.jpg
+- Redmi Note 15 256 GB: https://media.icdn.hu/product/2026-01/779227/2146799_xiaomi-redmi-note-15-677-4g-6-128gb-kek.webp
+- Redmi Note 15 128 GB: https://media.icdn.hu/product/2026-01/779227/2146799_xiaomi-redmi-note-15-677-4g-6-128gb-kek.webp
+- Redmi 17 256 GB: https://gagadget.com/media/uploads2/original_1ggapff.jpeg
+- Redmi 17 128 GB: https://gagadget.com/media/uploads2/original_1ggapff.jpeg
+- Redmi Note 14 Pro 256 GB / 8 GB RAM: https://www.alkomprar.com/medias/6941812742143-001-1400Wx1400H
+- Redmi Note 15 Pro 256 GB / 8 GB RAM: https://cdn.alsgp0.fds.api.mi-img.com/middle.community.micommunityglobal.bkt/1b452e0a966629bcbb4b3af6204903fd
+- Realme Note 70 256 GB: https://cdn.comparetab.com/images/20251209101814_63ecf607d1b2c623ace8aa030643711091f6f31e.webp
+- Realme Note 70 128 GB: https://cdn.comparetab.com/images/20251209101814_63ecf607d1b2c623ace8aa030643711091f6f31e.webp
+- Realme Note 60x 64 GB: https://gsmbutik.ru/image/catalog/import_files/66/66c5cd23ba1c11ef842200155db5ff28_c3f43f21ba1c11ef842200155db5ff28.jpg
+- Moto G15 256 GB: https://www.tiendalenovo.es/media/catalog/product/cache/81c729132649484cb6d742515cd80d6c/m/o/moto_g15_4g_gg_01_1200x1200.jpg
+- Moto G35 256 GB 5G: https://covercompany.com.uy/cdn/shop/files/23118_1.jpg?v=1751298015
+- Moto G04 128 GB: https://www.pcservice.com.uy/contentimg/90754/1/d/MOTG04GN_01.jpg
+- Moto G06 128 GB: https://image.idntimes.com/post/20250908/1000172877_73c7bda0-ae0a-4b3a-9203-7a52a307b6cc.jpg
+- Moto G06 256 GB: https://image.idntimes.com/post/20250908/1000172877_73c7bda0-ae0a-4b3a-9203-7a52a307b6cc.jpg
+- Moto E15 64 GB: https://www.powerplanetonline.com/cdnassets/Motorola-Moto-E15-azul-001_l_sf.webp
+- Galaxy A7 64 GB: https://fonez.it/cdn/shop/products/a7-2018-black_0eecfa99-860c-4082-a690-0e9f61d04aa5_1024x.jpg?v=1605815369
+- Honor X5c 128 GB NFC: https://media.falabella.com/falabellaPE/154079081_01/w%3D1200%2Ch%3D1200%2Cfit%3Dpad
+
+---
+
+## Pesquisa original de licenças e conferências
+
 # Pesquisa de imagens e identificação — PM Cell Vacaria
 
 Consulta em 28/10/2026. Os 28 cadastros correspondem a 20 famílias de modelos. Fotografias oficiais não são automaticamente licenciadas para uso comercial. As URLs de lojas e portais no HTML de origem não vieram acompanhadas de autorização de reutilização.

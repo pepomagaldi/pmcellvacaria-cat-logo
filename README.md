@@ -6,7 +6,7 @@ Catálogo real em Next.js App Router, React, TypeScript, Tailwind CSS 4 e Lucide
 
 Os 28 SKUs e preços finais à vista do HTML foram importados. Busca, filtros combinados, ordenação, mensagens de WhatsApp, menu mobile, disponibilidade e cálculo de parcelamento estão implementados. Os custos e as margens do fornecedor não fazem parte deste projeto.
 
-**Pendência editorial:** 25 cards ainda não exibem fotografia. Existem 3 fotografias locais licenciadas: Redmi 15 (2 cards), Moto G35 (1 card) e Redmi 15C (reservada até confirmação da nomenclatura). Não são packshots profissionais; não atendem integralmente ao pedido de fundo branco/transparente. O hero usa o logotipo original como composição provisória, sem imagem inventada. Complete a fotografia antes do lançamento comercial. Consulte `docs/IMAGENS-E-PENDENCIAS.md` e `docs/VALIDACAO.md`.
+**Imagens de produto:** os 28 cards usam as 20 referências de imagens HTTPS presentes no HTML anterior, em áreas visuais brancas e com `object-fit: contain`. As fotos são ilustrativas e podem mostrar cores diferentes. Elas são carregadas dos respectivos sites externos: disponibilidade, permissões e estabilidade dos links não são garantidas; confirme com os titulares as autorizações para utilização comercial antes de divulgação ampla. Há fallback visível quando a imagem não carrega.
 
 O Instagram não é exibido porque a URL ainda não foi confirmada. Estoque inicia como “consulte disponibilidade”. Não há avaliações, garantias, frete ou especificações inventadas. Só o Moto G35 recebe selo 5G, conforme o HTML; os demais dependem da confirmação da versão do estoque.
 

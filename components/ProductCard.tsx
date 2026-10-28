@@ -20,6 +20,7 @@ export default function ProductCard({ product: p }: { product: Product }) {
         {p.image && !failed ? (
           <Image
             src={p.image}
+            unoptimized
             alt={p.imageAlt}
             fill
             sizes="(max-width: 599px) 90vw, (max-width: 999px) 45vw, 25vw"
