@@ -20,13 +20,15 @@ export function installments(cashPrice: number, config = payment) {
   if (
     !(cashPrice > 0) ||
     config.fee < 0 ||
-    config.fee >= 1 ||
+    !(config.taxRate >= 0) ||
+    config.fee + config.taxRate >= 1 ||
     !Number.isInteger(config.installments) ||
     config.installments < 1 ||
     config.roundTotalTo <= 0
   )
     throw new Error("Configuração de preço/parcelamento inválida");
-  const raw = cashPrice / (1 - config.fee) / config.roundTotalTo;
+  // Preserva o lucro após imposto simulado e taxa da maquininha em 12x.
+  const raw = cashPrice * (1 - config.taxRate) / (1 - config.taxRate - config.fee) / config.roundTotalTo;
   const rounded =
     (config.rounding === "nearest" ? Math.round(raw) : Math.ceil(raw)) *
     config.roundTotalTo;

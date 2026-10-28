@@ -15,9 +15,8 @@ test("28 SKUs únicos e preços de venda importados", () => {
   assert.deepEqual(
     products.map((p) => p.cashPrice),
     [
-      1120, 1210, 1470, 1830, 1470, 1000, 1120, 960, 1550, 1260, 1120, 1990,
-      1730, 1720, 1440, 2200, 2530, 1430, 1210, 960, 1370, 1480, 1100, 1140,
-      1290, 960, 1040, 960,
+      1190, 1250, 1470, 1830, 1470, 1090, 1190, 1060, 1550, 1300, 1190, 1990,
+      1730, 1720, 1440, 2200, 2530, 1430, 1250, 1060, 1390, 1480, 1170, 1200, 1320, 1060, 1120, 1060,
     ],
   );
   assert.ok(products.every((p) => !("cost" in p)));
@@ -73,19 +72,20 @@ test("ordenações por preço e alfabética", () => {
   assert.equal(products[0].id, "pm-01");
 });
 test("parcelas iguais somam o total exibido; taxa configurável", () => {
-  const r = installments(1120);
-  assert.equal(r.installment, 106.67);
-  assert.equal(r.total, 1280.04);
+  const r = installments(1190);
+  assert.equal(r.installment, 115);
+  assert.equal(r.total, 1380);
   for (const p of products) {
     const t = installments(p.cashPrice);
     assert.equal(
       Math.round(t.installment * payment.installments * 100),
       Math.round(t.total * 100),
     );
-    assert.ok(t.total >= p.cashPrice / (1 - payment.fee));
+    assert.ok(t.total * (1 - payment.fee - payment.taxRate) >= p.cashPrice * (1 - payment.taxRate) - 1e-7);
   }
   assert.equal(installments(1200, { ...payment, fee: 0 }).total, 1200);
   assert.throws(() => installments(100, { ...payment, fee: 1 }));
+  assert.throws(() => installments(100, { ...payment, taxRate: 1 }));
 });
 test("todos os links têm número oficial, modelo e preço exatos", () => {
   for (const p of products) {
@@ -97,4 +97,18 @@ test("todos os links têm número oficial, modelo e preço exatos", () => {
       `Olá! Vi no catálogo da PM Cell e gostaria de saber mais sobre o ${p.name}, anunciado por ${money(p.cashPrice)}. Está disponível?`,
     );
   }
+});
+
+// Custos de fornecedor: fixture de testes; NÃO são enviados ao navegador.
+test("os 28 modelos preservam lucro mínimo de R$ 280 no Pix e em 12x na maquininha (imposto estimado)", () => {
+  const costs = [810, 870, 1060, 1320, 1060, 720, 810, 690, 1120, 910, 810, 1440, 1250, 1240, 1040, 1590, 1830, 1030, 870, 690, 990, 1070, 790, 820, 930, 690, 750, 690];
+  const previousPrices = [1120, 1210, 1470, 1830, 1470, 1000, 1120, 960, 1550, 1260, 1120, 1990, 1730, 1720, 1440, 2200, 2530, 1430, 1210, 960, 1370, 1480, 1100, 1140, 1290, 960, 1040, 960];
+  products.forEach((p,i) => {
+    const netCash = p.cashPrice * (1-payment.taxRate)-costs[i];
+    const totalCard = installments(p.cashPrice).total;
+    const netCard = totalCard*(1-payment.taxRate-payment.fee)-costs[i];
+    assert.ok(netCash >= 280-1e-6, `${p.name}: Pix ${netCash}`);
+    assert.ok(netCard >= 280-1e-6, `${p.name}: cartão ${netCard}`);
+    assert.ok(p.cashPrice >= previousPrices[i], `${p.name}: preço antigo mantido quando mais lucrativo`);
+  });
 });

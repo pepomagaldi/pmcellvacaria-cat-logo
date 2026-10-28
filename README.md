@@ -31,7 +31,7 @@ npm start
 
 ## Atualizar o catálogo
 
-Edite apenas **`data/catalog.json`**. Todos os preços, estoque, imagens, taxa e dados de contato ficam nesse arquivo. Os componentes não precisam mudar.
+Edite apenas **`data/catalog.json`**. Todos os preços, estoque, imagens, taxa e dados de contato ficam nesse arquivo. A política de lucro mínimo estimado de R$ 280 após 8% de impostos está em `docs/POLITICA-DE-PRECOS.md`. Os componentes não precisam mudar.
 
 Exemplo de um produto (substitua os valores pelo aparelho real):
 
@@ -70,7 +70,7 @@ Em `payment`:
 - `roundTotalTo`: múltiplo em reais, inicialmente `10`.
 - `rounding`: `"up"` arredonda total para cima, `"nearest"` para o mais próximo.
 
-A regra importada é `totalBase = preçoÀVista / (1 - taxa)`, arredondado para o múltiplo configurado. O valor de cada parcela é arredondado para cima no centavo; o total anunciado é **parcela × quantidade**. Exemplo: R$ 1.120,00 → base arredondada R$ 1.280,00 → 12 × R$ 106,67 → total mostrado R$ 1.280,04. O HTML arredondava apenas a apresentação, podendo mostrar uma parcela cuja soma divergia do total. A entrega corrige essa diferença, de no máximo 11 centavos em 12x. Nenhum texto promete “sem juros”.
+A regra atual é `totalBase = preçoÀVista × (1 - imposto) / (1 - imposto - taxa)`, arredondado para o múltiplo configurado. O valor de cada parcela é arredondado para cima no centavo; o total anunciado é **parcela × quantidade**. Exemplo atualizado: R$ 1.190,00 à vista → total arredondado R$ 1.380,00 → 12 × R$ 115,00. O HTML arredondava apenas a apresentação, podendo mostrar uma parcela cuja soma divergia do total. A entrega corrige essa diferença, de no máximo 11 centavos em 12x. Nenhum texto promete “sem juros”.
 
 A taxa é configurável e deve corresponder ao plano real da loja. Para mudar a quantidade anunciada além de 12, revise também os textos comerciais que mencionam 12x.
 
