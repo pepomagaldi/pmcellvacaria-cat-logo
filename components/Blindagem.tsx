@@ -10,6 +10,51 @@ const chapters = [
   { label: '03 / CURA UV', title: <>Luz que transforma.<br/><em>Cuidado que permanece.</em></>, text: 'Depois da aplicação, a cura com luz UV e o polimento completam o processo.' },
   { label: '04 / PRONTO PARA A ROTINA', title: <>Seu celular.<br/><em>Uma camada a mais.</em></>, text: 'Conheça a blindagem, tire suas dúvidas e descubra a opção para o seu aparelho.' }
 ];
+function DropExperience() {
+  const root = useRef<HTMLElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const section = root.current, view = stage.current;
+    if (!section || !view) return;
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const clamp = (n: number) => Math.max(0, Math.min(1,n));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const range = section.offsetHeight - window.innerHeight;
+      const p = media.matches ? 1 : clamp(-section.getBoundingClientRect().top / Math.max(1, range));
+      // The long final approach gives the visitor direct slow-motion control.
+      const approach = p < .42 ? Math.pow(p/.42, 1.65)*.73 : .73+clamp((p-.42)/.30)*.27;
+      const impact = clamp((p-.72)/.14);
+      const bounce = p > .72 && p < .87 ? Math.sin((p-.72)/.15*Math.PI)*3 : 0;
+      view.style.setProperty('--fall-y', `${-17+approach*37-bounce}svh`);
+      view.style.setProperty('--fall-x', `${-12+approach*20}deg`);
+      view.style.setProperty('--fall-tilt', `${15+approach*57}deg`);
+      view.style.setProperty('--fall-spin', `${-27+approach*49}deg`);
+      view.style.setProperty('--fall-scale', `${.85+approach*.18}`);
+      view.style.setProperty('--shadow', `${.12+approach*.68}`);
+      view.style.setProperty('--ring-scale', `${.3+impact*2.6}`);
+      view.style.setProperty('--ring-opacity', `${p >= .72 && p < .9 ? Math.sin(impact*Math.PI) : 0}`);
+      view.style.setProperty('--drop-progress', `${p*100}%`);
+      view.dataset.phase = p < .35 ? 'fall' : p < .72 ? 'slow' : 'impact';
+    };
+    const queue = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update(); window.addEventListener('scroll',queue,{passive:true}); window.addEventListener('resize',queue); media.addEventListener('change',queue);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll',queue); window.removeEventListener('resize',queue); media.removeEventListener('change',queue); };
+  },[]);
+  return <section ref={root} id="queda" className={s.dropStory} aria-label="Cena ilustrativa de queda controlada pela rolagem">
+    <div ref={stage} className={s.dropScene} data-phase="fall">
+      <div className={s.dropHeading}><p className={s.kicker}>O IMPREVISTO NÃO AVISA.</p><h2>Um instante.<br/><span>Muda tudo.</span></h2></div>
+      <div className={s.dropLabels}><p data-label="fall">A queda começa.<small>Você controla o tempo. Continue rolando.</small></p><p data-label="slow">O tempo desacelera.<small>O cuidado começa antes do impacto.</small></p><p data-label="impact">Não espere acontecer.<small>Conheça a blindagem. Cuide do seu aparelho.</small></p></div>
+      <div className={s.dropWorld} aria-hidden="true">
+        <div className={s.floor}><div className={s.floorGrid}/></div>
+        <div className={s.groundShadow}/><div className={s.impactRing}/><div className={s.impactRingSecond}/>
+        <div className={s.fallingPhone}><div className={s.phoneThickness}/><div className={s.screen}><div className={s.island}/><div className={s.wallpaper}/><div className={s.screenType}>nano<span>titanium.</span><small>PM CELL / VACARIA</small></div><div className={s.dropCoat}/><div className={s.glassShine}/></div></div>
+      </div>
+      <div className={s.dropFooter}><p>Demonstração ilustrativa. A blindagem não torna o aparelho inquebrável.<br/>Quedas e impactos ainda podem causar danos.</p><a href="#sobre">Conheça os cuidados <ArrowDown size={14}/></a><div className={s.dropProgress}/></div>
+    </div>
+  </section>;
+}
 export default function Blindagem() {
   const story = useRef<HTMLElement>(null);
   const scene = useRef<HTMLDivElement>(null);
@@ -35,7 +80,7 @@ export default function Blindagem() {
   },[]);
   return <div className={s.site}>
     <a className="skip-link" href="#sobre">Pular apresentação</a>
-    <header className={s.header}><a href="#" className={s.brand}><Image src="/brand/logo.webp" width={34} height={48} alt="PM Cell Vacaria"/><span>PM CELL<small>VACARIA</small></span></a><nav aria-label="Navegação principal"><a href="#experiencia">Tecnologia</a><a href="#processo">Aplicação</a><a href="#duvidas">Dúvidas</a></nav><a className={s.smallCta} href={contact} target="_blank" rel="noopener noreferrer">Agendar <ArrowUpRight size={15}/></a></header>
+    <header className={s.header}><a href="#" className={s.brand}><Image src="/brand/logo.webp" width={34} height={48} alt="PM Cell Vacaria"/><span>PM CELL<small>VACARIA</small></span></a><nav aria-label="Navegação principal"><a href="#experiencia">Tecnologia</a><a href="#queda">A queda</a><a href="#processo">Aplicação</a><a href="#duvidas">Dúvidas</a></nav><a className={s.smallCta} href={contact} target="_blank" rel="noopener noreferrer">Agendar <ArrowUpRight size={15}/></a></header>
     <main>
       <section className={s.intro}><div className={s.introMeta}><span>PM CELL APRESENTA</span><span>VACARIA / RS</span></div><p className={s.kicker}>BLINDAGEM NANOTITANIUM</p><h1>O próximo nível<br/>de <span>cuidado.</span></h1><p className={s.lead}>Uma nova camada para o vidro.<br/>Uma nova forma de cuidar do seu celular.</p><a className={s.explore} href="#experiencia">Role para descobrir <ArrowDown size={16}/></a><div className={s.heroOrb} aria-hidden="true"/><div className={s.introBottom}><span>NANO REVESTIMENTO + CURA UV</span><span>TECNOLOGIA APLICADA COM CUIDADO</span></div></section>
       <section ref={story} className={s.story} id="experiencia" aria-label="Conheça as etapas da blindagem">
@@ -46,6 +91,7 @@ export default function Blindagem() {
           <div className={s.timeline}><span>NANOTITANIUM</span><div><i/></div><span>EXPLORE COM A ROLAGEM ↓</span></div>
         </div>
       </section>
+      <DropExperience />
       <section className={s.statement} id="sobre"><p className={s.kicker}>PROTEÇÃO COMEÇA COM INFORMAÇÃO.</p><h2>Mais cuidado.<br/><span>Sem mudar a essência.</span></h2><div className={s.statementGrid}><p>A blindagem NanoTitanium é um revestimento aplicado sobre o vidro do aparelho. Conheça o processo e as condições de uso diretamente com quem faz a aplicação.</p><div><ShieldCheck size={28}/><h3>Cuidado extra para a superfície.</h3><p>A proposta é contribuir para a resistência a riscos no uso diário. O aparelho continua exigindo cuidado com quedas e impactos.</p></div></div></section>
       <section className={s.process} id="processo"><div className={s.sectionTop}><p className={s.kicker}>DA PREPARAÇÃO AO ACABAMENTO</p><span>01 — 04</span></div><h2>O cuidado está<br/>no processo inteiro.</h2><div className={s.steps}>{[{icon:Sparkles,title:'Preparar.',text:'Limpeza cuidadosa do vidro para receber a aplicação.'},{icon:ShieldCheck,title:'Aplicar.',text:'Distribuição do revestimento sobre a superfície preparada.'},{icon:Sun,title:'Curar.',text:'Etapa de cura com luz UV durante o procedimento.'},{icon:Sparkles,title:'Finalizar.',text:'Polimento e conferência do acabamento do aparelho.'}].map((step,i)=><article key={step.title}><div><span>0{i+1}</span><step.icon size={24}/></div><h3>{step.title}</h3><p>{step.text}</p></article>)}</div><p className={s.processNote}>Aplicação em aproximadamente 1 hora. O tempo pode variar conforme o aparelho.</p></section>
       <section className={s.faq} id="duvidas"><div><p className={s.kicker}>SEM MISTÉRIO</p><h2>Antes de<br/>blindar, entenda.</h2></div><div>{[['O celular fica inquebrável?','Não. A blindagem não elimina o risco de quebra e não é um seguro para a tela. Quedas e impactos ainda podem causar danos.'],['Posso continuar usando capinha?','Continue cuidando do aparelho. Consulte a PM Cell sobre o uso de capinha e a compatibilidade de películas com a aplicação.'],['Quanto custa para o meu modelo?','O valor depende do aparelho e da aplicação. Chame no WhatsApp e informe o modelo para receber o orçamento.'],['Onde é feita a aplicação?','Atendemos em Vacaria, na assistência ou em domicílio mediante agendamento. Consulte a disponibilidade para seu endereço.']].map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
