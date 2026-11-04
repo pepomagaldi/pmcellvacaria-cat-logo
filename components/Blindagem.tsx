@@ -126,7 +126,7 @@ export default function Blindagem() {
           <a href="#agendar">Quero atendimento assim <ArrowUpRight size={17}/></a>
         </div>
         <article className={s.caseCard}>
-          <div className={s.caseCardTop}><span>PM CELL / REGISTRO Nº 014</span><span>VACARIA — RS</span></div>
+          <div className={s.caseCardTop}><span>PM CELL / CASO REAL · IPHONE 14</span><span>VACARIA — RS</span></div>
           <div className={s.caseMetric} aria-label="Cerca de 50 minutos de aplicação"><span>APLICAÇÃO REALIZADA EM</span><div>50<span>MIN</span></div><p>no consultório da cliente</p></div>
           <div className={s.caseCardBottom}>
             <span className={s.casePill}>IPHONE 14 · BLINDAGEM NANOTITANIUM</span>
