@@ -5,10 +5,10 @@ import { ArrowDown, ArrowUpRight, ShieldCheck, Sparkles, Sun, MapPin } from 'luc
 import s from './Blindagem.module.css';
 const contact = 'https://wa.me/5554996899213?text='+encodeURIComponent('Olá! Vi o site da blindagem NanoTitanium e quero consultar o valor para meu celular. Meu modelo é: ');
 const chapters = [
-  { label: '01 / NANO REVESTIMENTO', title: <>Invisível aos olhos.<br/><em>Presente no cuidado.</em></>, text: 'Uma aplicação sobre o vidro, com acabamento discreto para acompanhar o seu dia.' },
-  { label: '02 / APLICAÇÃO', title: <>Cada detalhe.<br/><em>Uma nova camada.</em></>, text: 'A superfície é preparada e recebe o revestimento NanoTitanium com aplicação cuidadosa.' },
-  { label: '03 / CURA UV', title: <>Luz que transforma.<br/><em>Cuidado que permanece.</em></>, text: 'Depois da aplicação, a cura com luz UV e o polimento completam o processo.' },
-  { label: '04 / PRONTO PARA A ROTINA', title: <>Seu celular.<br/><em>Uma camada a mais.</em></>, text: 'Conheça a blindagem, tire suas dúvidas e descubra a opção para o seu aparelho.' }
+  { label: '01 / SOBRE O VIDRO', title: <>Não é uma<br/><em>película convencional.</em></>, text: 'O NanoTitanium é um revestimento aplicado nas superfícies de vidro compatíveis do aparelho. Sem uma película espessa por cima da tela.' },
+  { label: '02 / PREPARAÇÃO', title: <>O resultado começa<br/><em>antes da aplicação.</em></>, text: 'Limpeza e preparação cuidadosas das áreas que vão receber o tratamento, conforme as características do modelo.' },
+  { label: '03 / CURA UV', title: <>Aplicar. Curar.<br/><em>Conferir.</em></>, text: 'Após distribuir o revestimento, a etapa de cura com luz UV faz parte do procedimento NanoTitanium.' },
+  { label: '04 / ACABAMENTO', title: <>De volta às mãos.<br/><em>Com tudo conferido.</em></>, text: 'Polimento, inspeção visual e verificação das áreas tratadas. Nas lentes compatíveis, também conferimos a imagem das câmeras.' }
 ];
 function DropExperience() {
   const root = useRef<HTMLElement>(null);
@@ -44,8 +44,8 @@ function DropExperience() {
   },[]);
   return <section ref={root} id="queda" className={s.dropStory} aria-label="Cena ilustrativa de queda controlada pela rolagem">
     <div ref={stage} className={s.dropScene} data-phase="fall">
-      <div className={s.dropHeading}><p className={s.kicker}>O IMPREVISTO NÃO AVISA.</p><h2>Um instante.<br/><span>Muda tudo.</span></h2></div>
-      <div className={s.dropLabels}><p data-label="fall">A queda começa.<small>Você controla o tempo. Continue rolando.</small></p><p data-label="slow">O tempo desacelera.<small>O cuidado começa antes do impacto.</small></p><p data-label="impact">Não espere acontecer.<small>Conheça a blindagem. Cuide do seu aparelho.</small></p></div>
+      <div className={s.dropHeading}><p className={s.kicker}>O ENSAIO QUE VOCÊ CONTROLA.</p><h2>A queda acontece<br/><span>em um segundo.</span></h2></div>
+      <div className={s.dropLabels}><p data-label="fall">Vai cair.<small>Role para acompanhar a cena em câmera lenta.</small></p><p data-label="slow">Agora, milésimo a milésimo.<small>Você controla a cena. Na vida real, não.</small></p><p data-label="impact">Sem promessa impossível.<small>O tratamento não elimina quebras ou danos por impacto.</small></p></div>
       <div className={s.dropWorld} aria-hidden="true">
         <div className={s.floor}><div className={s.floorGrid}/></div>
         <div className={s.groundShadow}/><div className={s.impactRing}/><div className={s.impactRingSecond}/>
@@ -87,9 +87,25 @@ export default function Blindagem() {
   const quoteHref = 'https://wa.me/5554996899213?text=' + encodeURIComponent(quoteMessage);
   return <div className={s.site}>
     <a className="skip-link" href="#sobre">Pular apresentação</a>
-    <header className={s.header}><a href="#" className={s.brand}><Image src="/brand/logo.webp" width={34} height={48} alt="PM Cell Vacaria"/><span>PM CELL<small>VACARIA</small></span></a><nav aria-label="Navegação principal"><a href="#experiencia">Tecnologia</a><a href="#queda">A queda</a><a href="#processo">Aplicação</a><a href="#duvidas">Dúvidas</a></nav><a className={s.smallCta} href={contact} target="_blank" rel="noopener noreferrer">Agendar <ArrowUpRight size={15}/></a></header>
+    <header className={s.header}><a href="#inicio" className={s.brand}><Image src="/brand/logo.webp" width={34} height={48} alt="PM Cell Vacaria"/><span>PM CELL<small>VACARIA</small></span></a><nav aria-label="Navegação principal"><a href="#experiencia">O tratamento</a><a href="#queda">Queda simulada</a><a href="#aplicacoes">Caso real</a><a href="#duvidas">Dúvidas</a></nav><a className={s.smallCta} href="#agendar">Pedir orçamento <ArrowUpRight size={15}/></a></header>
     <main>
-      <section className={s.intro}><div className={s.introMeta}><span>PM CELL APRESENTA</span><span>VACARIA / RS</span></div><p className={s.kicker}>BLINDAGEM NANOTITANIUM</p><h1>O próximo nível<br/>de <span>cuidado.</span></h1><p className={s.lead}>Uma nova camada para o vidro.<br/>Uma nova forma de cuidar do seu celular.</p><a className={s.explore} href="#experiencia">Role para descobrir <ArrowDown size={16}/></a><div className={s.heroOrb} aria-hidden="true"/><div className={s.introBottom}><span>NANO REVESTIMENTO + CURA UV</span><span>TECNOLOGIA APLICADA COM CUIDADO</span></div></section>
+      <section className={s.intro} id="inicio">
+        <div className={s.introMeta}><span>PM CELL / VACARIA — RS</span><span>APLICAÇÃO NANOTITANIUM / 2026</span></div>
+        <div className={s.introCopy}>
+          <p className={s.kicker}><span className={s.pulseDot}/> BLINDAGEM DE VIDRO · CURA UV</p>
+          <h1>Não é<br/>película.<br/><span>É NanoTitanium.</span></h1>
+          <p className={s.lead}>Blindagem aplicada diretamente no vidro do seu celular. Tela, traseira e lentes compatíveis. Sem precisar sair da sua rotina.</p>
+          <div className={s.heroActions}><a href="#agendar" className={s.heroPrimary}>Quero blindar meu celular <ArrowUpRight size={19}/></a><a href="#experiencia" className={s.explore}>Ver como funciona <ArrowDown size={16}/></a></div>
+          <div className={s.heroStats}><div><strong>50–60 <sup>MIN</sup></strong><small>tempo aproximado</small></div><div><strong>UV <sup>+</sup> NANO</strong><small>aplicação e cura</small></div><div><strong>VACARIA</strong><small>inclusive em domicílio*</small></div></div>
+        </div>
+        <div className={s.heroDevice} aria-hidden="true"><div className={s.heroEdge}><div className={s.heroScreen}><div className={s.heroIsland}/><div className={s.heroLens}/><span className={s.heroSmallMark}>PM CELL / NANO</span><span className={s.heroBigMark}>N.</span></div></div><div className={s.heroGlassPlane}/><div className={s.heroLightLine}/><span className={s.heroSpecLabel}>REVESTIMENTO / VISUALIZAÇÃO CONCEITUAL</span></div>
+        <div className={s.introBottom}><span>*DOMICÍLIO MEDIANTE AGENDAMENTO</span><span>BLINDAGEM NÃO TORNA O APARELHO INQUEBRÁVEL</span></div>
+      </section>
+      <section className={s.serviceStrip} aria-label="Diferenciais da aplicação">
+        <div><span>01 /</span><strong>NO SEU ENDEREÇO</strong><small>Aplicação também em domicílio, sob agendamento.</small></div>
+        <div><span>02 /</span><strong>ATÉ AS LENTES</strong><small>Tratamento nas áreas compatíveis do aparelho.</small></div>
+        <div><span>03 /</span><strong>SEM MISTÉRIO</strong><small>Processo, cuidados e limites explicados.</small></div>
+      </section>
       <section ref={story} className={s.story} id="experiencia" aria-label="Conheça as etapas da blindagem">
         <div ref={scene} className={s.scene} data-chapter="0">
           <div className={s.sceneGlow} aria-hidden="true"/>
@@ -99,28 +115,29 @@ export default function Blindagem() {
         </div>
       </section>
       <DropExperience />
-      <section className={s.statement} id="sobre"><p className={s.kicker}>PROTEÇÃO COMEÇA COM INFORMAÇÃO.</p><h2>Mais cuidado.<br/><span>Sem mudar a essência.</span></h2><div className={s.statementGrid}><p>A blindagem NanoTitanium é um revestimento aplicado sobre o vidro do aparelho. Conheça o processo e as condições de uso diretamente com quem faz a aplicação.</p><div><ShieldCheck size={28}/><h3>Cuidado extra para a superfície.</h3><p>A proposta é contribuir para a resistência a riscos no uso diário. O aparelho continua exigindo cuidado com quedas e impactos.</p></div></div></section>
-      <section className={s.process} id="processo"><div className={s.sectionTop}><p className={s.kicker}>DA PREPARAÇÃO AO ACABAMENTO</p><span>01 — 04</span></div><h2>O cuidado está<br/>no processo inteiro.</h2><div className={s.steps}>{[{icon:Sparkles,title:'Preparar.',text:'Limpeza cuidadosa do vidro para receber a aplicação.'},{icon:ShieldCheck,title:'Aplicar.',text:'Distribuição do revestimento sobre a superfície preparada.'},{icon:Sun,title:'Curar.',text:'Etapa de cura com luz UV durante o procedimento.'},{icon:Sparkles,title:'Finalizar.',text:'Polimento e conferência do acabamento do aparelho.'}].map((step,i)=><article key={step.title}><div><span>0{i+1}</span><step.icon size={24}/></div><h3>{step.title}</h3><p>{step.text}</p></article>)}</div><p className={s.processNote}>Aplicação em aproximadamente 1 hora. O tempo pode variar conforme o aparelho.</p></section>
+      <section className={s.statement} id="sobre"><p className={s.kicker}>TRANSPARÊNCIA FAZ PARTE DA APLICAÇÃO.</p><h2>Sem truque.<br/><span>Sem promessa impossível.</span></h2><div className={s.statementGrid}><div><p>A blindagem NanoTitanium é um tratamento de superfície para áreas de vidro compatíveis. O objetivo é acrescentar resistência a riscos do uso cotidiano, sem substituir os cuidados normais com o aparelho.</p><span className={s.honestyLine}>RECOMENDAÇÃO PM CELL / CONTINUE USANDO CAPINHA</span></div><div className={s.honestyCard}><ShieldCheck size={26}/><h3>O que a blindagem não faz?</h3><p>Não torna o celular inquebrável, não impede toda quebra por queda e não funciona como seguro para tela, traseira ou câmeras.</p></div></div></section>
+      <section className={s.process} id="processo"><div className={s.sectionTop}><p className={s.kicker}>O PROCESSO NA PM CELL</p><span>04 ETAPAS / APROX. 1 HORA</span></div><h2>Do vidro limpo<br/>à conferência final.</h2><div className={s.steps}>{[{icon:Sparkles,title:'Limpeza.',text:'Preparação da tela, da traseira e das áreas compatíveis.'},{icon:ShieldCheck,title:'NanoTitanium.',text:'Revestimento distribuído nas superfícies selecionadas.'},{icon:Sun,title:'Cura UV.',text:'Exposição à luz UV como etapa do tratamento.'},{icon:Sparkles,title:'Polimento.',text:'Acabamento e conferência, incluindo a imagem das lentes quando tratadas.'}].map((step,i)=><article key={step.title}><div><span>0{i+1}</span><step.icon size={24}/></div><h3>{step.title}</h3><p>{step.text}</p></article>)}</div><p className={s.processNote}>A aplicação costuma levar cerca de 50 a 60 minutos. O tempo exato e as áreas tratadas dependem do modelo e das condições do aparelho.</p></section>
       <section className={s.realCase} id="aplicacoes" aria-labelledby="case-heading">
         <div className={s.caseCopy}>
-          <p className={s.kicker}>APLICAÇÕES REAIS EM VACARIA</p>
-          <h2 id="case-heading">Da tecnologia.<br/><span>Para a sua rotina.</span></h2>
-          <p>Mais do que uma animação, a blindagem faz parte do nosso atendimento diário. Veja um exemplo de aplicação já realizada.</p>
-          <a href="#agendar">Quero blindar meu aparelho <ArrowUpRight size={17}/></a>
+          <p className={s.kicker}><span className={s.pulseDot}/> ATENDIMENTO REAL · 04.11.2026</p>
+          <h2 id="case-heading">Um iPhone 14.<br/><span>Um consultório.</span><br/>50 minutos.</h2>
+          <p>Em Vacaria, fizemos a aplicação diretamente no local de trabalho da cliente. Blindamos as áreas compatíveis, realizamos o polimento e conferimos as funções e a nitidez das câmeras.</p>
+          <div className={s.caseTags}><span>TELA</span><span>TRASEIRA</span><span>LENTES</span><span>POLIMENTO</span></div>
+          <a href="#agendar">Quero atendimento assim <ArrowUpRight size={17}/></a>
         </div>
         <article className={s.caseCard}>
-          <div className={s.caseCardTop}><span>REGISTRO DE ATENDIMENTO</span><span>PM CELL / VACARIA</span></div>
-          <div className={s.caseDevice} aria-hidden="true"><span>14</span><i/></div>
+          <div className={s.caseCardTop}><span>PM CELL / REGISTRO Nº 014</span><span>VACARIA — RS</span></div>
+          <div className={s.caseMetric} aria-label="Cerca de 50 minutos de aplicação"><span>APLICAÇÃO REALIZADA EM</span><div>50<span>MIN</span></div><p>no consultório da cliente</p></div>
           <div className={s.caseCardBottom}>
-            <span className={s.casePill}>IPHONE 14</span>
-            <h3>Blindagem no local da cliente.</h3>
-            <p>Tela, traseira e lentes de câmera receberam o tratamento, com polimento e conferência do aparelho. Aplicação realizada no consultório da cliente em cerca de 50 minutos.</p>
-            <small>Tempo e cobertura podem variar conforme o modelo e as condições do aparelho.</small>
+            <span className={s.casePill}>IPHONE 14 · BLINDAGEM NANOTITANIUM</span>
+            <h3>Atendemos onde a rotina acontece.</h3>
+            <p>Tela, traseira e lentes de câmera tratadas, com polimento e conferência final do aparelho.</p>
+            <small>Registro descritivo de atendimento. A ilustração e os dados de tempo não constituem garantia contra quebra. Tempo e cobertura variam conforme o aparelho.</small>
           </div>
         </article>
       </section>
-      <section className={s.faq} id="duvidas"><div><p className={s.kicker}>SEM MISTÉRIO</p><h2>Antes de<br/>blindar, entenda.</h2></div><div>{[['O celular fica inquebrável?','Não. A blindagem não elimina o risco de quebra e não é um seguro para a tela. Quedas e impactos ainda podem causar danos.'],['Posso continuar usando capinha?','Continue cuidando do aparelho. Consulte a PM Cell sobre o uso de capinha e a compatibilidade de películas com a aplicação.'],['A blindagem afeta a nitidez das câmeras?','A compatibilidade do tratamento nas lentes é avaliada conforme o modelo. Quando essa área é tratada, verificamos o acabamento e a imagem das câmeras após o procedimento. Consulte antes da aplicação.'],['Qual é a durabilidade?','A durabilidade estimada do tratamento é de 6 a 8 meses, podendo variar conforme o uso, a limpeza e os cuidados com o aparelho.'],['Quanto custa para o meu modelo?','O valor depende do aparelho e das áreas tratadas. Informe seu modelo no formulário abaixo para receber um orçamento personalizado.'],['Onde é feita a aplicação?','Atendemos em Vacaria, na assistência ou em domicílio mediante agendamento. Consulte a disponibilidade para seu endereço.']].map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
-      <section className={s.contact} id="agendar"><p className={s.kicker}><MapPin size={14}/> VACARIA, RIO GRANDE DO SUL</p><h2>Seu celular merece<br/><span>esse cuidado.</span></h2><p>Informe seu modelo. O WhatsApp já abre com os dados do seu orçamento.</p>
+      <section className={s.faq} id="duvidas"><div><p className={s.kicker}>DÚVIDAS QUE OUVIMOS NO ATENDIMENTO</p><h2>Perguntas reais.<br/>Respostas diretas.</h2></div><div>{[['A blindagem tem garantia contra quebra?','Não. A aplicação não equivale a seguro nem cobre trincas ou quebras causadas por quedas e impactos. O aparelho continua sujeito a danos.'],['O celular fica inquebrável?','Não. A blindagem não elimina o risco de quebra nem transforma o vidro em material inquebrável. Quedas e impactos ainda podem causar danos.'],['Posso continuar usando capinha?','Continue cuidando do aparelho. Consulte a PM Cell sobre o uso de capinha e a compatibilidade de películas com a aplicação.'],['A blindagem afeta a nitidez das câmeras?','A compatibilidade do tratamento nas lentes é avaliada conforme o modelo. Quando essa área é tratada, verificamos o acabamento e a imagem das câmeras após o procedimento. Consulte antes da aplicação.'],['Qual é a durabilidade?','A durabilidade estimada do tratamento é de 6 a 8 meses, podendo variar conforme o uso, a limpeza e os cuidados com o aparelho.'],['Quanto custa para o meu modelo?','O valor depende do aparelho e das áreas tratadas. Informe seu modelo no formulário abaixo para receber um orçamento personalizado.'],['Onde é feita a aplicação?','Atendemos em Vacaria, na assistência ou em domicílio mediante agendamento. Consulte a disponibilidade para seu endereço.']].map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
+      <section className={s.contact} id="agendar"><p className={s.kicker}><MapPin size={14}/> A PM CELL VAI ATÉ VOCÊ / VACARIA — RS</p><h2>Qual celular<br/><span>vamos blindar?</span></h2><p>Orçamento direto, sem cadastro. Informe o modelo e escolha onde quer ser atendido.</p>
         <div className={s.quotePanel}>
           <label htmlFor="quote-model">Qual é o modelo do seu celular?</label>
           <input id="quote-model" name="modelo" value={quoteModel} onChange={(event) => setQuoteModel(event.target.value)} placeholder="Ex.: iPhone 14, Galaxy S24, Redmi Note 13..." autoComplete="off" maxLength={90}/>
