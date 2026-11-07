@@ -13,7 +13,10 @@ import {
 import Header from "@/components/Header";
 import Catalog from "@/components/Catalog";
 import WhatsAppLink from "@/components/WhatsAppLink";
-import { store } from "@/lib/catalog";
+import { store, products, money, installments, payment } from "@/lib/catalog";
+
+const featured = products.find((p) => p.id === "pm-22")!;
+const featuredTerms = installments(featured.cashPrice);
 const benefits = [
   {
     icon: HeartHandshake,
@@ -78,23 +81,31 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art">
-            <div className="brand-stage">
-              <Image
-                src="/brand/logo.webp"
-                alt="PM Cell Vacaria — logotipo original"
-                fill
-                priority
-                sizes="(max-width: 767px) 90vw, 45vw"
-              />
+            <div className="featured-stage">
+              {featured.image && (
+                <Image
+                  src={featured.image}
+                  alt={featured.imageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 767px) 90vw, 45vw"
+                />
+              )}
             </div>
             <div className="hero-caption">
-              <span>ESCOLHA COM CONFIANÇA</span>
-              <p>
-                Seu próximo passo.
-                <br />
-                <b>Começa com uma conversa.</b>
-              </p>
-              <ArrowUpRight size={27} />
+              <div>
+                <span>DESTAQUE DO CATÁLOGO</span>
+                <p>
+                  <b>{featured.name}</b>
+                  <br />
+                  {money(featured.cashPrice)} à vista
+                  <br />
+                  ou {payment.installments}x de {money(featuredTerms.installment)}
+                </p>
+              </div>
+              <WhatsAppLink href={`https://wa.me/${store.whatsapp}?text=${encodeURIComponent("Olá! Vi o " + featured.name + " no site da PM Cell e quero saber a disponibilidade.")}`} className="button primary">
+                Tenho interesse
+              </WhatsAppLink>
             </div>
           </div>
         </section>
