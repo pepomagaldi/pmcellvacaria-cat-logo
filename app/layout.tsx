@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { siteUrl } from "@/lib/catalog";
 import "./globals.css";
-const title = "PM Cell Vacaria | Smartphones e celulares em até 12x";
+const title = "PM Cell Vacaria | Blindagem NanoTitanium";
 const description =
-  "Comprar celular em Vacaria: compare smartphones Xiaomi, Motorola, Realme, Samsung e Honor. Preços à vista, parcelamento em até 12x e atendimento pelo WhatsApp.";
+  "Blindagem NanoTitanium e assistência técnica em Vacaria. Conheça a aplicação com cura UV e consulte pelo WhatsApp.";
 export const metadata: Metadata = {
   title,
   description,
@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     ? { metadataBase: new URL(siteUrl), alternates: { canonical: "/" } }
     : {}),
   keywords: [
-    "Comprar celular em Vacaria",
-    "Smartphones em Vacaria RS",
-    "Xiaomi em Vacaria",
-    "Motorola em Vacaria",
-    "Celulares parcelados em Vacaria",
+    "Blindagem em Vacaria",
+    "NanoTitanium em Vacaria RS",
+    "Blindagem para celular",
+    "Cura UV",
+    "PM Cell Vacaria",
   ],
   openGraph: {
     title,
@@ -58,3 +58,4 @@ export default function RootLayout({
     </html>
   );
 }
+
